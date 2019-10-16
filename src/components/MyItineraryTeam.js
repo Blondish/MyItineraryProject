@@ -37,8 +37,16 @@ class MyItineraryTeam extends Component {
 
   render() {
     return (
-      <div className="employee">
-        <DisplayEmployee employees={this.state.employees} />
+      <div className="container">
+        <h1>This is my team</h1>
+        <div className="employee">
+          <DisplayEmployee employees={this.state.employees} />
+        </div>
+        <h2>Please add another employee</h2>
+        <form>
+          <input type="text"></input>
+          <button>Submit</button>
+        </form>
       </div>
     );
   }

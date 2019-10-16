@@ -1,6 +1,40 @@
 .App {
   text-align: center;
 }
+
+.container {
+  margin: auto;
+  width: 90%;
+  text-align: center;
+}
+.logo {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.browsing,
+.loging {
+  height: 30%;
+}
 .employee {
-  background-color: yellow;
+  justify-content: space-around;
+  display: flex;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: auto;
+}
+
+footer img {
+  height: 50px;
+  width: 50px;
+  text-align: center;
 }
