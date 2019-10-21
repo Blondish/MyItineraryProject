@@ -1,24 +1,35 @@
-.App {
-  text-align: center;
+html {
+  margin: 0;
+  padding: 0;
 }
-
+.flexdiv {
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  height: 12vh;
+  min-width: 300px;
+  margin: 10px auto;
+  align-content: center;
+}
 .container {
+  height: 80vh;
   margin: auto;
   width: 90%;
   text-align: center;
 }
-.logo {
-  width: 100%;
-  margin-bottom: 50px;
+p {
+  padding: 20px 0;
+  font-size: 1.5em;
+}
+
+h3:hover {
+  color: blue;
 }
 
 .browsing,
-.loging {
+.login {
   height: 30%;
-}
-.employee {
-  justify-content: space-around;
-  display: flex;
 }
 
 img {
@@ -26,11 +37,22 @@ img {
   width: 100px;
 }
 
+.link {
+  text-decoration: none;
+  margin: 15px;
+  color: black;
+  font-size: 1.5em;
+}
+.link:hover {
+  color: blue;
+}
+
 footer {
+  height: 8vh;
   position: fixed;
   bottom: 0;
   width: 100%;
-  margin: auto;
+  text-align: center;
 }
 
 footer img {
