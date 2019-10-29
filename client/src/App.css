@@ -60,3 +60,16 @@ footer img {
   width: 50px;
   text-align: center;
 }
+
+.citiesfetch {
+  padding: 10px 20px;
+  margin: 10px;
+  border: 1px solid blue;
+  text-align: center;
+}
+
+.citiesfetch a {
+  text-decoration: none;
+
+  font-size: 1.5em;
+}

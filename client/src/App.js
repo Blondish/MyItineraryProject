@@ -3,13 +3,13 @@ import MyLandingPage from "./components/MyLandingPage";
 import LogInPage from "./components/LogInPage";
 import CreateAccountPage from "./components/CreateAccountPage";
 import CitiesPage from "./components/CitiesPage";
+import Itineraries from "./components/Itineraries";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import "./App.css";
 
 class App extends Component {
   render() {
-    // <div>{<MyLandingPage />}</div>;
     return (
       <Router>
         <div>
@@ -41,6 +41,7 @@ class App extends Component {
             <Route path="/CitiesPage">
               <CitiesPage />
             </Route>
+            <Route path="/Itineraries/:id" component={Itineraries} />
           </Switch>
         </div>
       </Router>
