@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cityRouter = require("./routes/cities");
 const itinRouter = require("./routes/itineraries");
+const actRouter = require("./routes/activities");
 const bodyParser = require("body-parser");
 const db = require("./keys").mongoURI;
 const app = express();
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/cities", cityRouter);
 app.use("/itineraries", itinRouter);
+app.use("/activities", actRouter);
 
 app.get("/", (req, res) => {
   res.send({ express: "this is a home" });

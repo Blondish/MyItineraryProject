@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchItineraries } from "../store/actions/itineraryActions";
+import { Link } from "react-router-dom";
 
 class itineraries extends Component {
   constructor(props) {
@@ -8,7 +9,6 @@ class itineraries extends Component {
     this.state = {
       error: null,
       isLoaded: false
-      //itineraries: []
       //filter: ""
     };
   }
@@ -18,21 +18,23 @@ class itineraries extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { itineraries } = this.props.itineraries;
+    const cityname = this.props.match.params.cityname;
+
     const { error, isLoaded } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (itineraries.length === 0) {
-      return <div>No Itineraries available for thid City</div>;
+      return <div>No Itineraries available for this City</div>;
     } else {
       return (
         <div>
-          <ul>
-            {itineraries.map(itinerary => (
-              <li key={itinerary._cityid}> {itinerary.title}</li>
-            ))}
-          </ul>
+          <h1> {cityname}</h1>
+          {itineraries.map(itinerary => (
+            <div key={itinerary._id} className="citiesfetch">
+              {itinerary.title} - {itinerary.username}
+            </div>
+          ))}
         </div>
       );
     }

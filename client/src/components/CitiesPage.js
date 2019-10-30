@@ -49,7 +49,7 @@ class CitiesPage extends Component {
 
           {filteredArray.map(city => (
             <div key={city._id} className="citiesfetch">
-              <Link to={"/Itineraries/" + city._id}>
+              <Link to={"/Itineraries/" + city._id + "/" + city.name}>
                 {" "}
                 {city.name} - {city.country}
               </Link>
