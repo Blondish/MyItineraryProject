@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchActivities } from "../store/actions/activityActions";
 
-class ActivitiesPage extends Component {
+class ActivitiesComp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,8 @@ class ActivitiesPage extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchActivities(this.props.match.params.id);
+    console.log(this.props);
+    this.props.fetchActivities(this.props.itinId);
   }
 
   render() {
@@ -24,14 +25,13 @@ class ActivitiesPage extends Component {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (activities.length === 0) {
-      return <div>No Activities available for thid City</div>;
+      return <div>No Activities available for this City</div>;
     } else {
       return (
         <div>
           {activities.map(activity => (
             <div key={activity._id} className="citiesfetch">
-              {" "}
-              {activity.name} - {activity.address}
+              {activity.pro} - {activity.address}
             </div>
           ))}
         </div>
@@ -47,4 +47,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { fetchActivities }
-)(ActivitiesPage);
+)(ActivitiesComp);

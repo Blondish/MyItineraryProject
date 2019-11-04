@@ -38,7 +38,8 @@ class CitiesPage extends Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div>
+        <div className="container">
+          <p className="search">Search for City</p>
           <form>
             <input
               type="text"
@@ -48,10 +49,9 @@ class CitiesPage extends Component {
           </form>
 
           {filteredArray.map(city => (
-            <div key={city._id} className="citiesfetch">
+            <div className="citiesfetch">
               <Link to={"/Itineraries/" + city._id + "/" + city.name}>
-                {" "}
-                {city.name} - {city.country}
+                <div key={city._id}>{city.name}</div>
               </Link>
             </div>
           ))}

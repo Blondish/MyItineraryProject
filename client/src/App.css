@@ -64,12 +64,47 @@ footer img {
 .citiesfetch {
   padding: 10px 20px;
   margin: 10px;
-  border: 1px solid blue;
+  border: 1px solid gray;
+  box-shadow: 5px 5px 2px darkgrey;
   text-align: center;
+}
+
+div.citiesfetch:hover {
+  box-shadow: 5px 5px 2px gray;
+}
+
+input {
+  width: 80%;
+  border: 1px solid gray;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 .citiesfetch a {
   text-decoration: none;
-
   font-size: 1.5em;
+  color: black;
+}
+
+p.search {
+  padding: 0;
+}
+
+.itinerariesfetch {
+  margin: 10px;
+}
+
+.genflex {
+  display: flex;
+
+  flex-flow: row nowrap;
+  height: 100%;
+  align-items: left;
+  justify-content: left;
+}
+.profileinfo {
+  width: 30%;
+}
+.otherinfo {
+  width: 70%;
 }

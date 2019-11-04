@@ -1,27 +1,34 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchItineraries } from "../store/actions/itineraryActions";
-import { Link } from "react-router-dom";
+import ItineraryItem from "../components/ItineraryItem";
 
 class itineraries extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false
+      selectedItinerary: ""
+
+      //isLoaded: false
       //filter: ""
     };
   }
 
   componentDidMount() {
+    console.log(this.props);
     this.props.fetchItineraries(this.props.match.params.id);
   }
+
+  changeSelectedItinerary = itinId => {
+    this.setState({ selectedItinerary: itinId });
+  };
 
   render() {
     const { itineraries } = this.props.itineraries;
     const cityname = this.props.match.params.cityname;
 
-    const { error, isLoaded } = this.state;
+    const { error } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (itineraries.length === 0) {
@@ -30,9 +37,14 @@ class itineraries extends Component {
       return (
         <div>
           <h1> {cityname}</h1>
+
           {itineraries.map(itinerary => (
-            <div key={itinerary._id} className="citiesfetch">
-              {itinerary.title} - {itinerary.username}
+            <div key={itinerary._id}>
+              <ItineraryItem
+                itinerary={itinerary}
+                selectedItinerary={this.state.selectedItinerary}
+                changeSelectedItinerary={this.changeSelectedItinerary}
+              ></ItineraryItem>
             </div>
           ))}
         </div>
