@@ -61,6 +61,11 @@ footer img {
   text-align: center;
 }
 
+.cityname {
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .citiesfetch {
   padding: 10px 20px;
   margin: 10px;
@@ -90,6 +95,12 @@ p.search {
   padding: 0;
 }
 
+.chooseanothercity {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 0.9em;
+}
 .itinerariesfetch {
   margin: 10px;
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CardActions from "@material-ui/core/CardActions";
@@ -32,12 +31,13 @@ function ItineraryItem(props) {
   const classes = useStyles();
   // const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = e => {
-    console.log(e.target.id);
-    props.changeSelectedItinerary(e.target.id);
+  const handleExpandClick = itinId => {
+    if (itinId === props.selectedItinerary) {
+      props.changeSelectedItinerary("");
+    } else {
+      props.changeSelectedItinerary(itinId);
+    }
   };
-
-  console.log(props);
 
   return (
     <div>
@@ -58,20 +58,18 @@ function ItineraryItem(props) {
                     <FavoriteIcon />
                   </IconButton>
                   <IconButton
+                    className="expandicon"
                     className={clsx(classes.expand, {
                       [classes.expandOpen]:
                         props.selectedItinerary === props.itinerary._id
                     })}
-                    onClick={handleExpandClick}
+                    onClick={() => handleExpandClick(props.itinerary._id)}
                     aria-expanded={
                       props.selectedItinerary === props.itinerary._id
                     }
                     aria-label="show more"
                   >
-                    <ExpandMoreIcon
-                      className="expandicon"
-                      id={props.itinerary._id}
-                    />
+                    <ExpandMoreIcon />
                   </IconButton>
                 </CardActions>
                 <Collapse

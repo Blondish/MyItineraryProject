@@ -4,7 +4,7 @@ import LogInPage from "./components/LogInPage";
 import CreateAccountPage from "./components/CreateAccountPage";
 import CitiesPage from "./components/CitiesPage";
 import Itineraries from "./components/Itineraries";
-
+import Drawer from "./components/Drawer";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import "./App.css";
@@ -14,7 +14,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <ul>
+          <Drawer></Drawer>
+          {/* <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -27,7 +28,7 @@ class App extends Component {
             <li>
               <Link to="/CitiesPage">CitiesPage</Link>
             </li>
-          </ul>
+          </ul> */}
 
           <Switch>
             <Route exact path="/">

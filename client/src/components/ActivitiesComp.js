@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchActivities } from "../store/actions/activityActions";
+import Slider from "react-slick";
 
 class ActivitiesComp extends Component {
   constructor(props) {
@@ -14,26 +15,35 @@ class ActivitiesComp extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     this.props.fetchActivities(this.props.itinId);
   }
 
   render() {
-    console.log(this.props);
+    // SLIDER Settings
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+
     const { activities } = this.props.activities;
     const { error, isLoaded } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (activities.length === 0) {
-      return <div>No Activities available for this City</div>;
+      return <div>No Activities display available</div>;
     } else {
       return (
         <div>
-          {activities.map(activity => (
-            <div key={activity._id} className="citiesfetch">
-              {activity.pro} - {activity.address}
-            </div>
-          ))}
+          <Slider {...settings}>
+            {activities.map(activity => (
+              <div key={activity._id} className="citiesfetch">
+                {activity.name} - {activity.address}
+              </div>
+            ))}
+          </Slider>
         </div>
       );
     }

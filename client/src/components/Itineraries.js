@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchItineraries } from "../store/actions/itineraryActions";
 import ItineraryItem from "../components/ItineraryItem";
+import { Link } from "react-router-dom";
 
 class itineraries extends Component {
   constructor(props) {
@@ -9,14 +10,10 @@ class itineraries extends Component {
     this.state = {
       error: null,
       selectedItinerary: ""
-
-      //isLoaded: false
-      //filter: ""
     };
   }
 
   componentDidMount() {
-    console.log(this.props);
     this.props.fetchItineraries(this.props.match.params.id);
   }
 
@@ -36,8 +33,7 @@ class itineraries extends Component {
     } else {
       return (
         <div>
-          <h1> {cityname}</h1>
-
+          <h1 className="cityname"> {cityname}</h1>
           {itineraries.map(itinerary => (
             <div key={itinerary._id}>
               <ItineraryItem
@@ -47,6 +43,9 @@ class itineraries extends Component {
               ></ItineraryItem>
             </div>
           ))}
+          <Link to="/CitiesPage">
+            <p className="chooseanothercity">Choose another city</p>
+          </Link>
         </div>
       );
     }
