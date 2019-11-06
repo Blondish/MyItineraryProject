@@ -3,17 +3,17 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import LocationCitySharpIcon from "@material-ui/icons/LocationCitySharp";
+import PersonAddRoundedIcon from "@material-ui/icons/PersonAddRounded";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
-    width: 200
+    width: 170
   },
   fullList: {
     width: "auto"
@@ -44,19 +44,24 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <List>
+      <List className="drawerliststyle">
         {[
           <Link to="/">
-            <HomeIcon>Home</HomeIcon>
+            <HomeIcon className="iconstyle"></HomeIcon> Home
           </Link>,
-          <Link to="/LogInPage">LogIn</Link>,
-          <Link to="/CreateAccountPage">CreateAccount</Link>,
-          <Link to="/CitiesPage">Cities</Link>
+          <Link to="/LogInPage">
+            <AccountCircleIcon className="iconstyle"></AccountCircleIcon>LogIn
+          </Link>,
+          <Link to="/CreateAccountPage">
+            <PersonAddRoundedIcon className="iconstyle"></PersonAddRoundedIcon>
+            New Account
+          </Link>,
+          <Link to="/CitiesPage">
+            <LocationCitySharpIcon className="iconstyle"></LocationCitySharpIcon>
+            Cities
+          </Link>
         ].map((text, index) => (
           <ListItem button key={index}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}

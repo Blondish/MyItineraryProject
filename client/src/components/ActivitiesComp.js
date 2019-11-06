@@ -39,7 +39,7 @@ class ActivitiesComp extends Component {
         <div>
           <Slider {...settings}>
             {activities.map(activity => (
-              <div key={activity._id} className="citiesfetch">
+              <div key={activity._id} className="activitiesslider">
                 {activity.name} - {activity.address}
               </div>
             ))}

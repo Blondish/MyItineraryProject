@@ -1,5 +1,5 @@
 export const fetchCities = () => dispatch => {
-  fetch("/cities/all")
+  fetch("/cities")
     .then(res => res.json())
     .then(result => {
       dispatch({

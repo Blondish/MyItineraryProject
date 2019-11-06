@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 html {
   margin: 0;
   padding: 0;
@@ -6,6 +9,11 @@ html {
   display: flex;
   flex-direction: column;
 }
+
+.topicondisplay {
+  display: flex;
+  justify-content: space-between;
+}
 .logo {
   height: 12vh;
   min-width: 300px;
@@ -13,9 +21,9 @@ html {
   align-content: center;
 }
 .container {
-  height: 80vh;
+  /* height: 80vh; */
   margin: auto;
-  width: 90%;
+  width: 100%;
   text-align: center;
 }
 p {
@@ -49,7 +57,7 @@ img {
 
 footer {
   height: 8vh;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   width: 100%;
   text-align: center;
@@ -60,6 +68,8 @@ footer img {
   width: 50px;
   text-align: center;
 }
+
+/* Cities Page display styling */
 
 .cityname {
   text-align: center;
@@ -95,6 +105,8 @@ p.search {
   padding: 0;
 }
 
+/* Itineries Display styling */
+
 .chooseanothercity {
   text-align: center;
   text-decoration: none;
@@ -118,4 +130,37 @@ p.search {
 }
 .otherinfo {
   width: 70%;
+}
+
+/* Drawer/Nav styling */
+
+.drawerliststyle a {
+  text-decoration: none;
+  color: black;
+}
+
+.iconstyle {
+  font-size: large;
+  margin-right: 10px;
+  color: black;
+}
+
+/* Activities slider styling */
+
+.activitiesslider {
+  text-align: center;
+  margin: 10px;
+  border: 1px solid gray;
+  max-width: 200px;
+  min-height: 100px;
+}
+
+/* Form styling  */
+
+.formstyle {
+  text-align: center;
+}
+
+.formstyle input {
+  width: 40%;
 }

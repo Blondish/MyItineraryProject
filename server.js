@@ -3,16 +3,18 @@ const express = require("express");
 const cityRouter = require("./routes/cities");
 const itinRouter = require("./routes/itineraries");
 const actRouter = require("./routes/activities");
-const bodyParser = require("body-parser");
+const userRouter = require("./routes/users");
 const db = require("./keys").mongoURI;
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/cities", cityRouter);
 app.use("/itineraries", itinRouter);
 app.use("/activities", actRouter);
+app.use("/users", userRouter);
 
 app.get("/", (req, res) => {
   res.send({ express: "this is a home" });
@@ -25,5 +27,9 @@ app.get("/itineraries/:cityid", (req, res) => {
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  })
   .then(() => console.log("database connected"));

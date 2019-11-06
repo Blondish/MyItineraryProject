@@ -6,7 +6,7 @@ const router = express.Router();
 //   res.send({ msg: "Cities test route." });
 // });
 
-router.get("/all", (req, res) => {
+router.get("/", (req, res) => {
   cityModel
     .find({})
     .then(files => {
