@@ -1,6 +1,7 @@
 const express = require("express");
 const cityModel = require("../model/cityModel");
 const router = express.Router();
+const auth = require("../middleware/authmiddleware");
 
 // router.get("/test", (req, res) => {
 //   res.send({ msg: "Cities test route." });
@@ -15,7 +16,7 @@ router.get("/", (req, res) => {
     .catch(err => console.log(err));
 });
 
-router.post("/", (req, res) => {
+router.post("/", auth, (req, res) => {
   const newCity = new cityModel({
     name: req.body.name,
     country: req.body.country
@@ -54,7 +55,7 @@ router.get("/:id", (req, res) => {
     .catch(error => res.status(400).json("error" + error));
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", auth, (req, res) => {
   console.log(req.params.id);
   cityModel
     .findByIdAndDelete(req.params.id)
@@ -62,7 +63,7 @@ router.delete("/:id", (req, res) => {
     .catch(error => res.status(400).json("error" + error));
 });
 
-router.post("/update/:id", (req, res) => {
+router.post("/update/:id", auth, (req, res) => {
   cityModel
     .findById(req.params.id)
     .then(city => {

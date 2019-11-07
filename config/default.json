@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://Olena:Hortons1@ubiqumcluster-dkqyh.mongodb.net/myitinerary?retryWrites=true&w=majority",
+  "jwtSecret": "myitinsecret"
+}

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
+import { connect } from "react-redux";
+import { createNewUser } from "../store/actions/createuserAction";
 
 class CreateAccountPage extends Component {
   constructor(props) {
@@ -17,7 +19,6 @@ class CreateAccountPage extends Component {
   handleInputChange(event) {
     const value = event.target.value;
     const name = event.target.name;
-    console.log(value, name);
 
     this.setState({
       [name]: value
@@ -27,6 +28,8 @@ class CreateAccountPage extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
+    this.props.createNewUser(this.state);
+    console.log(this.state.value);
   }
 
   render() {
@@ -72,4 +75,10 @@ class CreateAccountPage extends Component {
   }
 }
 
-export default CreateAccountPage;
+const mapStateToProps = state => ({
+  value: state.value
+});
+export default connect(
+  mapStateToProps,
+  { createNewUser }
+)(CreateAccountPage);

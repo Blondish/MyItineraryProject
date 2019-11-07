@@ -3,6 +3,8 @@ const userModel = require("../model/userModel");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const { check, validationResult } = require("express-validator");
+const config = require("config");
+const jwt = require("jsonwebtoken");
 
 router.get("/", (req, res) => {
   userModel
@@ -14,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 router.post(
-  "/",
+  "/signup",
   [
     check("username").isLength({ min: 3 }),
     check("email").isEmail(),
@@ -25,26 +27,37 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-    const newUser = new userModel({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
-    });
 
     userModel.findOne({ email: req.body.email }).then(files => {
-      if (files) {
-        res.send({ message: "User exist!" });
-      } else {
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser.save().then(user => {
-              res.send(user);
-            });
+      if (files) return res.send({ message: "User exist!" });
+
+      const newUser = new userModel({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+      });
+
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          console.log("in");
+          newUser.save().then(user => {
+            console.log("in");
+            jwt.sign(
+              { _id: user._id }, //payload
+              config.get("jwtSecret"), //get secret token
+              { expiresIn: 3600 }, // 1 hour expiry
+              (err, token) => {
+                //callback
+                if (err) throw err;
+                console.log(newUser);
+                res.json({ token, user });
+              }
+            );
           });
         });
-      }
+      });
     });
   }
 );

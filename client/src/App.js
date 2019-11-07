@@ -17,7 +17,10 @@ class App extends Component {
         <div>
           <div className="topicondisplay">
             <Link to="/CreateAccountPage">
-              <PersonAddRoundedIcon className="iconstyle"></PersonAddRoundedIcon>
+              <PersonAddRoundedIcon
+                className="iconstyle"
+                fontSize="large"
+              ></PersonAddRoundedIcon>
             </Link>
             <Drawer></Drawer>
           </div>
