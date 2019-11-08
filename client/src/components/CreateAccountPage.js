@@ -29,7 +29,6 @@ class CreateAccountPage extends Component {
     event.preventDefault();
     console.log(this.state);
     this.props.createNewUser(this.state);
-    console.log(this.state.value);
   }
 
   render() {
@@ -40,7 +39,7 @@ class CreateAccountPage extends Component {
           <TextField
             name="username"
             type="text"
-            checked={this.state.email}
+            value={this.state.username}
             onChange={this.handleInputChange}
             label="username"
             margin="normal"
@@ -50,7 +49,7 @@ class CreateAccountPage extends Component {
           <TextField
             name="email"
             type="text"
-            checked={this.state.email}
+            value={this.state.email}
             onChange={this.handleInputChange}
             label="Email"
             margin="normal"

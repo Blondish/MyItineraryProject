@@ -7,6 +7,7 @@ const config = require("config");
 const jwt = require("jsonwebtoken");
 const auth = require("../middleware/authmiddleware");
 
+//route to log into the existing acct
 router.post(
   "/login",
   [check("email").isEmail(), check("password").isLength({ min: 5 })],
@@ -36,6 +37,7 @@ router.post(
   }
 );
 
+//router to see if user is logged in
 router.get("/user", auth, (req, res) => {
   userModel
     .findById(req.user._id)

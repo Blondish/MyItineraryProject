@@ -15,6 +15,7 @@ router.get("/", (req, res) => {
     .catch(err => console.log(err));
 });
 
+//route to create a new user account
 router.post(
   "/signup",
   [

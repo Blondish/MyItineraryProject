@@ -5,7 +5,14 @@ import CreateAccountPage from "./components/CreateAccountPage";
 import CitiesPage from "./components/CitiesPage";
 import Itineraries from "./components/Itineraries";
 import Drawer from "./components/Drawer";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
+import { connect } from "react-redux";
 import PersonAddRoundedIcon from "@material-ui/icons/PersonAddRounded";
 
 import "./App.css";
@@ -39,6 +46,7 @@ class App extends Component {
               <CitiesPage />
             </Route>
             <Route path="/Itineraries/:id/:cityname" component={Itineraries} />
+            <Redirect from="/LogInPage" to="/" />
           </Switch>
         </div>
       </Router>
@@ -46,4 +54,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  user: state.users.user,
+  token: state.users.token
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(App);

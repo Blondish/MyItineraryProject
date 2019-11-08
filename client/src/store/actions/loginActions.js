@@ -1,5 +1,5 @@
-export const createNewUser = data => dispatch => {
-  fetch("/users/signup", {
+export const loginUser = data => dispatch => {
+  fetch("/auth/login", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -9,7 +9,9 @@ export const createNewUser = data => dispatch => {
   })
     .then(res => res.json())
     .then(result => {
+      console.log(result);
       dispatch({
+        type: "LOG_IN_USER",
         payload: result
       });
     })
