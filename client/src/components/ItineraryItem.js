@@ -9,12 +9,16 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Collapse from "@material-ui/core/Collapse";
 import ActivitiesComp from "../components/ActivitiesComp";
+import Comments from "../components/Comments";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 345
   },
-
+  root: {
+    flexGrow: 1
+  },
   expand: {
     transform: "rotate(0deg)",
     marginLeft: "auto",
@@ -46,13 +50,18 @@ function ItineraryItem(props) {
           <Card>
             <CardContent>
               <div>
-                <h3>{props.itinerary.title}</h3>
-                <div>
-                  {props.itinerary.profilepic} - {props.itinerary.username}
-                </div>
-                {props.itinerary.rating}
-                {props.itinerary.duration} - {props.itinerary.price}
-                <div>{props.itinerary.hashtags}</div>
+                <Grid className={classes.root} container spacing={3}>
+                  <Grid item xs={3} className="profileinfo">
+                    {props.itinerary.profilepic} <br />
+                    {props.itinerary.username}
+                  </Grid>
+                  <Grid item xs={9} className="otherinfo">
+                    <h3>{props.itinerary.title}</h3>
+                    {props.itinerary.rating}
+                    {props.itinerary.duration} - {props.itinerary.price}
+                    <div>{props.itinerary.hashtags}</div>
+                  </Grid>
+                </Grid>
                 <CardActions disableSpacing>
                   <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
@@ -78,9 +87,11 @@ function ItineraryItem(props) {
                   unmountOnExit
                 >
                   <CardContent>
+                    <h3>Activities</h3>
                     <ActivitiesComp
                       itinId={props.itinerary._id}
                     ></ActivitiesComp>
+                    {/* <Comments itinId={props.comment._id}></Comments> */}
                   </CardContent>
                 </Collapse>
               </div>

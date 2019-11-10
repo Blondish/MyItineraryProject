@@ -34,6 +34,7 @@ class itineraries extends Component {
       return (
         <div>
           <h1 className="cityname"> {cityname}</h1>
+
           {itineraries.map(itinerary => (
             <div key={itinerary._id}>
               <ItineraryItem

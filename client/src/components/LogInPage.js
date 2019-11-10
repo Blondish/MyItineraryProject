@@ -30,12 +30,12 @@ class LogInPage extends Component {
     this.props.loginUser(this.state);
     console.log(this.props); //empty
   }
-  // redirect = () => {
-  //   console.log(this.user._id);
-  //   if (this.props) {
-  //     return <Redirect to="/"></Redirect>;
-  //   }
-  // };
+  redirect = () => {
+    console.log(this.user._id);
+    if (this.user._id) {
+      return <Redirect to="/"></Redirect>;
+    }
+  };
 
   render() {
     return (

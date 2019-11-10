@@ -13,6 +13,7 @@ html {
 .topicondisplay {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
   margin-right: 20px;
   margin-left: 20px;
   font-size: 1.5em;
@@ -120,19 +121,13 @@ p.search {
   margin: 10px;
 }
 
-.genflex {
-  display: flex;
-
-  flex-flow: row nowrap;
-  height: 100%;
-  align-items: left;
-  justify-content: left;
-}
 .profileinfo {
-  width: 30%;
+  align-self: center;
+  text-align: left;
 }
 .otherinfo {
-  width: 70%;
+  align-self: center;
+  text-align: right;
 }
 
 /* Drawer/Nav styling */

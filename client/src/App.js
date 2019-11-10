@@ -9,11 +9,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from "react-router-dom";
 import { connect } from "react-redux";
-import PersonAddRoundedIcon from "@material-ui/icons/PersonAddRounded";
+
+import AccountMenu from "./components/AccountMenu";
 
 import "./App.css";
 
@@ -23,12 +23,7 @@ class App extends Component {
       <Router>
         <div>
           <div className="topicondisplay">
-            <Link to="/CreateAccountPage">
-              <PersonAddRoundedIcon
-                className="iconstyle"
-                fontSize="large"
-              ></PersonAddRoundedIcon>
-            </Link>
+            <AccountMenu></AccountMenu>
             <Drawer></Drawer>
           </div>
 
