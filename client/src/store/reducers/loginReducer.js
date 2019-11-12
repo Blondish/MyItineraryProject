@@ -1,6 +1,6 @@
 const initState = {
   token: null,
-  user: {}
+  user: null
 };
 
 const loginReducer = (state = initState, action) => {
@@ -11,6 +11,14 @@ const loginReducer = (state = initState, action) => {
         ...state,
         user: action.payload.user,
         token: action.payload.token
+      };
+
+    case "LOGOUT_USER":
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        user: null,
+        token: null
       };
 
     default:

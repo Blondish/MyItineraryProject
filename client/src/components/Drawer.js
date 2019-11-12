@@ -20,7 +20,8 @@ const useStyles = makeStyles({
   }
 });
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer(props) {
+  console.log(props);
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false
@@ -49,12 +50,8 @@ export default function TemporaryDrawer() {
           <Link to="/">
             <HomeIcon className="iconstyle"></HomeIcon> Home
           </Link>,
-          <Link to="/LogInPage">
-            <AccountCircleIcon className="iconstyle"></AccountCircleIcon>LogIn
-          </Link>,
-          <Link to="/CreateAccountPage">
-            <PersonAddRoundedIcon className="iconstyle"></PersonAddRoundedIcon>
-            New Account
+          <Link to="/Favourites">
+            <AccountCircleIcon className="iconstyle"></AccountCircleIcon>MyFaves
           </Link>,
           <Link to="/CitiesPage">
             <LocationCitySharpIcon className="iconstyle"></LocationCitySharpIcon>

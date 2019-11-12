@@ -52,7 +52,7 @@ function ItineraryItem(props) {
               <div>
                 <Grid className={classes.root} container spacing={3}>
                   <Grid item xs={3} className="profileinfo">
-                    {props.itinerary.profilepic} <br />
+                    <img src={props.itinerary.profilepic} />
                     {props.itinerary.username}
                   </Grid>
                   <Grid item xs={9} className="otherinfo">
@@ -91,7 +91,8 @@ function ItineraryItem(props) {
                     <ActivitiesComp
                       itinId={props.itinerary._id}
                     ></ActivitiesComp>
-                    {/* <Comments itinId={props.comment._id}></Comments> */}
+                    <h3>Comments</h3>
+                    <Comments itinId={props.itinerary._id}></Comments>
                   </CardContent>
                 </Collapse>
               </div>

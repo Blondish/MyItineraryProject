@@ -4,6 +4,7 @@ import LogInPage from "./components/LogInPage";
 import CreateAccountPage from "./components/CreateAccountPage";
 import CitiesPage from "./components/CitiesPage";
 import Itineraries from "./components/Itineraries";
+import Favourites from "./components/Favourites";
 import Drawer from "./components/Drawer";
 import {
   BrowserRouter as Router,
@@ -23,8 +24,8 @@ class App extends Component {
       <Router>
         <div>
           <div className="topicondisplay">
-            <AccountMenu></AccountMenu>
-            <Drawer></Drawer>
+            <AccountMenu user={this.props.user}></AccountMenu>
+            <Drawer user={this.props.user}></Drawer>
           </div>
 
           <Switch>
@@ -33,6 +34,9 @@ class App extends Component {
             </Route>
             <Route path="/LogInPage">
               <LogInPage />
+            </Route>
+            <Route path="/Favourites">
+              <Favourites />
             </Route>
             <Route path="/CreateAccountPage">
               <CreateAccountPage />

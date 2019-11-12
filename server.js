@@ -4,6 +4,7 @@ const app = express();
 const cityRouter = require("./routes/cities");
 const itinRouter = require("./routes/itineraries");
 const actRouter = require("./routes/activities");
+const commentRouter = require("./routes/comments");
 const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const config = require("config");
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/cities", cityRouter);
 app.use("/itineraries", itinRouter);
 app.use("/activities", actRouter);
+app.use("/comments", commentRouter);
 app.use("/users", userRouter);
 app.use("/auth", authRouter);
 

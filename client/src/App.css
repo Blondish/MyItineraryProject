@@ -125,6 +125,10 @@ p.search {
   align-self: center;
   text-align: left;
 }
+
+.profileinfo img {
+  border-radius: 50%;
+}
 .otherinfo {
   align-self: center;
   text-align: right;

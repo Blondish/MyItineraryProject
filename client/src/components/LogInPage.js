@@ -31,40 +31,43 @@ class LogInPage extends Component {
     console.log(this.props); //empty
   }
   redirect = () => {
-    console.log(this.user._id);
-    if (this.user._id) {
+    console.log(this.props.user);
+    if (this.props.user) {
       return <Redirect to="/"></Redirect>;
     }
   };
 
   render() {
     return (
-      <div className="formstyle">
-        <h3>Please Log Into Your Account</h3>
-        <form onSubmit={this.handleSubmit}>
-          <TextField
-            name="email"
-            type="text"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-            label="Email"
-            margin="normal"
-            variant="outlined"
-          />
+      <div>
+        {this.redirect()}
+        <div className="formstyle">
+          <h3>Please Log Into Your Account</h3>
+          <form onSubmit={this.handleSubmit}>
+            <TextField
+              name="email"
+              type="text"
+              value={this.state.email}
+              onChange={this.handleInputChange}
+              label="Email"
+              margin="normal"
+              variant="outlined"
+            />
 
-          <br />
-          <TextField
-            name="password"
-            type="text"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            label="Password"
-            margin="normal"
-            variant="outlined"
-          />
-          <br />
-          <input type="submit" value="Submit" />
-        </form>
+            <br />
+            <TextField
+              name="password"
+              type="text"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              label="Password"
+              margin="normal"
+              variant="outlined"
+            />
+            <br />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
       </div>
     );
   }

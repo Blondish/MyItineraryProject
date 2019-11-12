@@ -19,3 +19,9 @@ export const loginUser = data => dispatch => {
       console.log(error);
     });
 };
+
+export const logoutUser = () => dispatch => {
+  dispatch({
+    type: "LOGOUT_USER"
+  });
+};

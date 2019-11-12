@@ -16,6 +16,7 @@ class Comments extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { comments } = this.props.comments;
     const { error, isLoaded } = this.state;
     if (error) {
