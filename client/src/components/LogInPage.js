@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
-import { loginUser } from "../store/actions/loginActions";
+import { loginUser } from "../store/actions/loginLogoutActions";
+import { returnErrors } from "../store/actions/errorActions";
 import { Redirect } from "react-router-dom";
 
 class LogInPage extends Component {
@@ -28,10 +29,9 @@ class LogInPage extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.loginUser(this.state);
-    console.log(this.props); //empty
+    this.props.returnErrors();
   }
   redirect = () => {
-    console.log(this.props.user);
     if (this.props.user) {
       return <Redirect to="/"></Redirect>;
     }
@@ -77,7 +77,4 @@ const mapStateToProps = state => ({
   user: state.users.user,
   token: state.users.token
 });
-export default connect(
-  mapStateToProps,
-  { loginUser }
-)(LogInPage);
+export default connect(mapStateToProps, { loginUser, returnErrors })(LogInPage);

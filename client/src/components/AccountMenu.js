@@ -7,7 +7,6 @@ import ChildCareIcon from "@material-ui/icons/ChildCare";
 import LogOutComp from "../components/LogOutComp";
 
 export default function SimpleMenu(props) {
-  console.log(props);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -38,7 +37,7 @@ export default function SimpleMenu(props) {
             <Link to="/Favourites">MyFaves</Link>
           </MenuItem>
           <MenuItem className="drawerliststyle" onClick={handleClose}>
-            <Link to="/LogInPage"> Log In </Link>
+            <LogOutComp></LogOutComp>
           </MenuItem>
         </Menu>
       </div>
@@ -64,7 +63,7 @@ export default function SimpleMenu(props) {
             <Link to="/CreateAccountPage">Create Account</Link>
           </MenuItem>
           <MenuItem className="drawerliststyle" onClick={handleClose}>
-            <LogOutComp></LogOutComp>
+            <Link to="/LogInPage"> Log In </Link>
           </MenuItem>
         </Menu>
       </div>

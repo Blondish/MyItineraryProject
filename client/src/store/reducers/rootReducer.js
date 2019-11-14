@@ -3,13 +3,17 @@ import citiesReducer from "./citiesReducer";
 import itineraryReducer from "./itineraryReducer";
 import activityReducer from "./activityReducer";
 import commentReducer from "./commentReducer";
-import loginReducer from "./loginReducer";
+import loginLogoutReducer from "./loginLogoutReducer";
+import errorReducer from "./errorReducer";
+import authReducer from "./authReducer";
 const rootReducer = combineReducers({
   cities: citiesReducer,
   itineraries: itineraryReducer,
   activities: activityReducer,
   comments: commentReducer,
-  users: loginReducer
+  users: loginLogoutReducer,
+  error: errorReducer,
+  auth: authReducer
 });
 
 export default rootReducer;

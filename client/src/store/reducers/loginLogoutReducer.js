@@ -12,6 +12,11 @@ const loginReducer = (state = initState, action) => {
         user: action.payload.user,
         token: action.payload.token
       };
+    case "USER_LOADED":
+      return {
+        ...state,
+        user: action.payload
+      };
 
     case "LOGOUT_USER":
       localStorage.removeItem("token");

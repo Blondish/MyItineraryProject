@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loginUser } from "../store/actions/loginActions";
-import { Redirect } from "react-router-dom";
+import { logoutUser } from "../store/actions/loginLogoutActions";
+// import { Redirect } from "react-router-dom";
 
 class logOut extends Component {
   constructor(props) {
@@ -9,19 +9,14 @@ class logOut extends Component {
     this.state = {};
   }
 
-  handleclick(event) {
-    event.preventDefault();
-    this.setState({
-      user: null,
-      token: null
-    });
-    return <Redirect to="/"></Redirect>;
-  }
+  handleclick = () => {
+    this.props.logoutUser();
+  };
 
   render() {
     return (
       <div>
-        <button>Log Out {this.handleclick}</button>
+        <button onClick={this.handleclick}>Log Out </button>
       </div>
     );
   }
@@ -33,5 +28,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { loginUser }
+  { logoutUser }
 )(logOut);

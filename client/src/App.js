@@ -13,12 +13,20 @@ import {
   Redirect
 } from "react-router-dom";
 import { connect } from "react-redux";
+import { loadUser } from "./store/actions/authActions";
 
 import AccountMenu from "./components/AccountMenu";
 
 import "./App.css";
 
 class App extends Component {
+  componentDidMount() {
+    const token = localStorage.token;
+    if (token) {
+      this.props.loadUser();
+    }
+  }
+
   render() {
     return (
       <Router>
@@ -53,12 +61,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.users.user,
-  token: state.users.token
-});
+const mapStateToProps = state => {
+  return {
+    user: state.users.user,
+    token: state.users.token
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  null
-)(App);
+export default connect(mapStateToProps, { loadUser })(App);
