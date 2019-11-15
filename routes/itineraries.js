@@ -25,6 +25,15 @@ router.get("/:cityid", (req, res) => {
     .catch(err => console.log(err));
 });
 
+router.get("/favourites/:itinid", (req, res) => {
+  let itinRequested = req.params.itinid;
+  itinModel
+    .find({ itinid: itinRequested })
+    .then(comments => {
+      res.send(comments);
+    })
+    .catch(err => console.log(err));
+});
 // router.get("/:id", (req, res) => {
 //   console.log(req.params.id);
 //   itineraryModel

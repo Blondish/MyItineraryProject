@@ -1,6 +1,5 @@
 const initState = {
   token: null,
-  isAuthentificated: null,
   user: null
 };
 export default function(state = initState, action) {
@@ -14,8 +13,7 @@ export default function(state = initState, action) {
       return {
         ...state,
         token: null,
-        user: null,
-        isAuthentificated: false
+        user: null
       };
     default:
       return state;

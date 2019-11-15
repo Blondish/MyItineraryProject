@@ -24,7 +24,7 @@ class itineraries extends Component {
   render() {
     const { itineraries } = this.props.itineraries;
     const cityname = this.props.match.params.cityname;
-
+    console.log(this.props);
     const { error } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -57,7 +57,4 @@ const mapStateToProps = state => ({
   itineraries: state.itineraries
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchItineraries }
-)(itineraries);
+export default connect(mapStateToProps, { fetchItineraries })(itineraries);

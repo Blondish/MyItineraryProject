@@ -17,11 +17,14 @@ class Comments extends Component {
 
   render() {
     console.log(this.props);
+    const token = localStorage.token;
     const { comments } = this.props.comments;
     const { error, isLoaded } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (comments.length === 0) {
+    } else if (!token) {
+      return <div>Please log in to see the comments</div>;
+    } else if (token && comments.length === 0) {
       return <div>Noone added any comments</div>;
     } else {
       return (
@@ -41,7 +44,4 @@ const mapStateToProps = state => ({
   comments: state.comments
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchComments }
-)(Comments);
+export default connect(mapStateToProps, { fetchComments })(Comments);

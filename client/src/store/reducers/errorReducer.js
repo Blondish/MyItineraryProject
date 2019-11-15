@@ -9,7 +9,7 @@ export default function(state = initState, action) {
     case "GET_ERRORS":
       return {
         ...state,
-        msg: action.payload.msg,
+        msg: action.payload,
         status: action.payload.status,
         id: action.payload.id
       };

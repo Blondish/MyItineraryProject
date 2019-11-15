@@ -10,7 +10,8 @@ class LogInPage extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      msg: {}
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -29,7 +30,8 @@ class LogInPage extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.loginUser(this.state);
-    this.props.returnErrors();
+    this.props.returnErrors(this.state.msg);
+    console.log(this.state.msg);
   }
   redirect = () => {
     if (this.props.user) {

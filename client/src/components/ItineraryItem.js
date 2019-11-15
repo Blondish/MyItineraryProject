@@ -33,6 +33,7 @@ const useStyles = makeStyles(theme => ({
 
 function ItineraryItem(props) {
   const classes = useStyles();
+
   // const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = itinId => {

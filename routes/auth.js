@@ -18,10 +18,12 @@ router.post(
     }
     const { email, password } = req.body;
     userModel.findOne({ email }).then(user => {
-      if (!user) return res.send({ message: "User does not exist!" });
+      if (!user)
+        return res.status(422).json({ message: "User does not exist!" });
       //validate password
       bcrypt.compare(password, user.password).then(isMatch => {
-        if (!isMatch) return res.send({ msg: "Incorrect Password)" });
+        if (!isMatch)
+          return res.status(422).json({ message: "Incorrect Password)" });
         jwt.sign(
           { _id: user._id }, //payload
           config.get("jwtSecret"), //get secret token

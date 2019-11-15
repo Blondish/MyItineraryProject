@@ -1,10 +1,12 @@
 const express = require("express");
 const userModel = require("../model/userModel");
+const itinModel = require("../model/itineraryModel");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const { check, validationResult } = require("express-validator");
 const config = require("config");
 const jwt = require("jsonwebtoken");
+const auth = require("../middleware/authmiddleware");
 
 router.get("/", (req, res) => {
   userModel
@@ -35,16 +37,16 @@ router.post(
       const newUser = new userModel({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        favourites: req.body.favourites
       });
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
-          console.log("in");
+
           newUser.save().then(user => {
-            console.log("in");
             jwt.sign(
               { _id: user._id }, //payload
               config.get("jwtSecret"), //get secret token
@@ -63,18 +65,31 @@ router.post(
   }
 );
 
-// router.post("/update/:id", (req, res) => {
-//   cityModel
-//     .findById(req.params.id)
-//     .then(city => {
-//       city.name = req.body.name;
-//       city.country = req.body.country;
-//       city
-//         .save()
-//         .then(() => req.json("city updated"))
-//         .catch(error => res.status(400).json("Error" + error));
-//     })
-//     .catch(error => res.status(400).json("error" + error));
-// });
+router.put("/update", auth, (req, res) => {
+  const favouriteItin = req.body.favourite;
+  userModel
+    .findByIdAndUpdate(req.user._id, { $push: { favourites: favouriteItin } })
+    .then(user => res.send(user))
+    .catch(error => res.status(400).json("error" + error));
+});
+
+router.put("/erase", auth, (req, res) => {
+  const favouriteItin = req.body.favourite;
+  userModel
+    .findByIdAndUpdate(req.user._id, { $pull: { favourites: favouriteItin } })
+    .then(user => res.send(user));
+});
+
+router.get("/favourites", auth, (req, res) => {
+  console.log(req.user);
+  userModel
+    .findById(req.user._id)
+    .then(user => {
+      itinModel.find({ _id: { $in: user.favourites } }).then(favs => {
+        res.json(favs);
+      });
+    })
+    .catch(err => console.log(err));
+});
 
 module.exports = router;
