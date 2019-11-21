@@ -8,22 +8,27 @@ class Favourites extends Component {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false
+      isLoaded: false,
+      selectedItinerary: ""
     };
   }
 
   componentDidMount() {
     this.props.fetchFavourites(this.props);
   }
+  changeSelectedItinerary = itinId => {
+    this.setState({ selectedItinerary: itinId });
+  };
 
   render() {
-    console.log(this.props.favourites);
     const token = localStorage.token;
-    const { favourites } = this.props.favourites;
+    const { favourites, user } = this.props;
+
+    console.log(favourites);
     const { error, isLoaded } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (!token) {
+    } else if (!token && !user) {
       return <div>Please log in to see the favourites</div>;
     } else if (token && favourites.length === 0) {
       return <div>You do not have any favourites</div>;
@@ -31,12 +36,15 @@ class Favourites extends Component {
       return (
         <div>
           <div>
-            {/* {favourites.map(favourite => (
+            {favourites.map(favourite => (
               <div key={favourite._id}>
-                <div>{favourite._id}</div>
-                <ItineraryItem favourite={favourite._id}></ItineraryItem>
+                <ItineraryItem
+                  itinerary={favourite}
+                  selectedItinerary={this.state.selectedItinerary}
+                  changeSelectedItinerary={this.changeSelectedItinerary}
+                ></ItineraryItem>
               </div>
-            ))} */}
+            ))}
           </div>
         </div>
       );
@@ -45,7 +53,8 @@ class Favourites extends Component {
 }
 
 const mapStateToProps = state => ({
-  favourites: state.favourites
+  favourites: state.favourites.favourites,
+  user: state.user
 });
 
 export default connect(mapStateToProps, { fetchFavourites })(Favourites);

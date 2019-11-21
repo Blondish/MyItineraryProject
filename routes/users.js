@@ -92,4 +92,31 @@ router.get("/favourites", auth, (req, res) => {
     .catch(err => console.log(err));
 });
 
+// router.put("/favorites", auth, (req, res) => {
+//   let isInArray = req.user.favourites.some(iti =>
+//     iti.equals(req.body.itinerary)
+//   );
+//   if (!isInArray) {
+//     let user = req.user;
+//     console.log(user);
+//     userModel
+//       .findByIdAndUpdate(req.user.id, {
+//         favourites: [...req.user.favourites, req.body.itinerary]
+//       })
+//       .then(user => {
+//         res.status(201).send(req.body.itinerary);
+//       });
+//   } else {
+//     userModel
+//       .findByIdAndUpdate(req.user.id, {
+//         $pull: {
+//           favourites: req.body.itinerary
+//         }
+//       })
+//       .then(user => {
+//         res.status(202).send(req.body.itinerary);
+//       });
+//   }
+// });
+
 module.exports = router;

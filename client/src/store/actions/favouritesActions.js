@@ -17,9 +17,9 @@ export const fetchFavourites = () => dispatch => {
     })
 
     .catch(error => {
-      this.setState({
-        isLoaded: true,
-        error
-      });
+      // this.setState({
+      //   isLoaded: true,
+      //   error
+      // });
     });
 };
