@@ -1,62 +1,105 @@
 body {
   margin: 0;
+  height: 100%;
+  box-sizing: border-box;
 }
 html {
   margin: 0;
   padding: 0;
+  height: 10vh;
 }
 .flexdiv {
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 .topicondisplay {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-top: 2%;
   font-size: 1.5em;
+  position: absolute;
+  width: 100%;
+  
 }
-.logo {
-  height: 12vh;
-  min-width: 300px;
-  margin: 10px auto;
-  align-content: center;
+.topicondisplay div {
+  padding: 0 5%;
 }
+.topicondisplay div svg {
+color: white
+}
+
+
 .container {
-  /* height: 80vh; */
+  height: 100%;
   margin: auto;
   width: 100%;
   text-align: center;
 }
-p {
+
+h1 {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 3em
+}
+h2 {
+  width: 60%;
+  margin: 10px auto;
   padding: 20px 0;
   font-size: 1.5em;
+  font-family: 'Fjalla One', sans-serif;
 }
 
-h3:hover {
-  color: blue;
+h3 {
+  font-family: 'Fjalla One', sans-serif;
+  color: #020000;
+  margin-bottom: 0;
 }
 
-.browsing,
+
+.browsing {
+  background-color: rgba(255,255,255, 0.5);
+  border-radius: 0.5%;
+  width: 40%;
+  max-height: 100px;
+  margin: 0 auto;
+  padding: 10px 0;
+  transition: all 0.2s ease-out
+}
+
+.browsing:hover {
+  width: 42%;
+  font-size: 1.05em
+}
+
+.browsing a {
+  color: #020000;
+  font-size: 2.5em;
+  margin-top: none;
+}
+
 .login {
-  height: 30%;
+  padding: 13% 0;
+    position: relative;
+    margin: auto
 }
 
-img {
-  height: 100px;
-  width: 100px;
+.login h3 {
+  color: white;
+  text-align: center
 }
 
 .link {
   text-decoration: none;
   margin: 15px;
-  color: black;
   font-size: 1.5em;
+  color: white;
+  transition: opacity 0.5s ease
 }
+
 .link:hover {
-  color: blue;
+  color:white;
+  opacity: 0.5;
 }
 
 footer {
