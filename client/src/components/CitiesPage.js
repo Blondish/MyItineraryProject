@@ -24,7 +24,10 @@ class CitiesPage extends Component {
     this.props.fetchCities();
   }
 
+
+
   render() {
+
     const { cities } = this.props.cities;
     const { error, isLoaded } = this.state;
     let filteredArray = cities.filter(city => {
@@ -47,14 +50,20 @@ class CitiesPage extends Component {
               onChange={this.handleChange}
             ></input>
           </form>
+          <div className="citiesholder">
 
-          {filteredArray.map(city => (
-            <div className="citiesfetch">
-              <Link to={"/Itineraries/" + city._id + "/" + city.name}>
-                <div key={city._id}>{city.name}</div>
-              </Link>
-            </div>
-          ))}
+            {filteredArray.map(city => (
+              <div key={city._id} className="city">
+                <Link to={"/Itineraries/" + city._id + "/" + city.name}>
+                  <img style={{
+                    backgroundImage: `url(${city.cityImage})`, backgroundPosition: "center", backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover"
+                  }} />
+                </Link>
+                <div >{city.name}</div>
+              </div>
+            ))}
+          </div>
         </div>
       );
     }
