@@ -123,7 +123,7 @@ footer img {
   flex-wrap: wrap;
   justify-content: space-around;
   width: 90%;
-  margin: 0 auto
+  margin: 3% auto
 }
 
 .cityname {
@@ -134,30 +134,31 @@ footer img {
 .city {
   width: 300px;
   height: 200px;
-  padding: 5px 7px;
+  padding: 4px;
   margin: 15px;
   text-align: center;
   border-radius: 20px;
   box-shadow: 5px 5px 10px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
   cursor: pointer;
+  font-weight: 1000
+}
+
+.city :hover {
+  opacity: 0.9;
 }
 
 .city img {
   width: 300px;
   height: 200px;
-  border-radius: 20px;
-
+  border-radius: 20px;;
 }
 
-div.citiesfetch:hover {
-  box-shadow: 5px 5px 2px gray;
-}
 
 input {
-  width: 60%;
-  border: 1px solid gray;
-  padding: 5px;
-  margin-bottom: 10px;
+  width: 40%;
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 8px;
 }
 
 .citiesfetch a {
@@ -165,9 +166,12 @@ input {
   font-size: 1.5em;
   color: black;
 }
-
-p.search {
-  padding: 0;
+.cityname {
+  position: relative;
+  bottom: 50%;
+  z-index: 1;
+  color: white;
+  font-size: 2em
 }
 
 /* Itineries Display styling */
@@ -222,8 +226,27 @@ p.search {
 
 .formstyle {
   text-align: center;
+  margin-top:15%;
+  color: #190605
+
+}
+.formstyle svg {
+  padding: 10px;
+  font-size: 3em
+}
+.formstyle h3 {
+  font-family: 'Fjalla One', sans-serif;
+  color: #020000;
+  margin-bottom: 2%;
+  font-weight: 100;
+  font-size: 2em
 }
 
-.formstyle input {
-  width: 40%;
+.formstyle .submit {
+  width: 30%;
+  margin: 5% auto;
+  padding: 2%;
+  background-color: #190605;
+  color: white;
+  font-size: 1em
 }

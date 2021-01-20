@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { loginUser } from "../store/actions/loginLogoutActions";
 import { returnErrors } from "../store/actions/errorActions";
 import { Redirect } from "react-router-dom";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 class LogInPage extends Component {
   constructor(props) {
@@ -44,7 +45,8 @@ class LogInPage extends Component {
       <div>
         {this.redirect()}
         <div className="formstyle">
-          <h3>Please Log Into Your Account</h3>
+          <h3>Login</h3>
+          <AccountCircleIcon />
           <form onSubmit={this.handleSubmit}>
             <TextField
               name="email"
@@ -67,7 +69,7 @@ class LogInPage extends Component {
               variant="outlined"
             />
             <br />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" className="submit" />
           </form>
         </div>
       </div>

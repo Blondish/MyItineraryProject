@@ -42,7 +42,7 @@ class CitiesPage extends Component {
     } else {
       return (
         <div className="container">
-          <p className="search">Search for City</p>
+          <h2 className="search">Search for City</h2>
           <form>
             <input
               type="text"
@@ -60,7 +60,7 @@ class CitiesPage extends Component {
                     backgroundSize: "cover"
                   }} />
                 </Link>
-                <div >{city.name}</div>
+                <div className="cityname" >{city.name}</div>
               </div>
             ))}
           </div>

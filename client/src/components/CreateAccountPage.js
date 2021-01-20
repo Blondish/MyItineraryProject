@@ -67,7 +67,7 @@ class CreateAccountPage extends Component {
             variant="outlined"
           />
           <br />
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="submit" />
         </form>
       </div>
     );

@@ -25,14 +25,19 @@ class App extends Component {
     if (token) {
       this.props.loadUser();
     }
+    if (this.props) {
+      console.log(this.props)
+    }
   }
+
+
 
   render() {
     return (
       <Router>
         <div>
           <div className="topicondisplay">
-            <AccountMenu user={this.props.user}></AccountMenu>
+            <AccountMenu user={this.props.user}  ></AccountMenu>
             <Drawer user={this.props.user}></Drawer>
           </div>
 
