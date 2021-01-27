@@ -21,13 +21,14 @@ html {
   font-size: 1.5em;
   position: absolute;
   width: 100%;
+  z-index: 1;
   
 }
 .topicondisplay div {
   padding: 0 5%;
 }
 .topicondisplay div svg {
-color: white
+color: rgba(255,255,255)
 }
 
 
@@ -224,10 +225,17 @@ input {
 
 /* Form styling  */
 
+
 .formstyle {
+  border-radius: 5px;
+  width: 60%;
   text-align: center;
-  margin-top:15%;
-  color: #190605
+  color: #190605;
+  background-color: white;
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  padding: 10px 20px;
 
 }
 .formstyle svg {
@@ -239,11 +247,12 @@ input {
   color: #020000;
   margin-bottom: 2%;
   font-weight: 100;
-  font-size: 2em
+  font-size: 2em;
+  padding: 2px;
 }
 
 .formstyle .submit {
-  width: 30%;
+  width: 50%;
   margin: 5% auto;
   padding: 2%;
   background-color: #190605;

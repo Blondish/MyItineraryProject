@@ -5,6 +5,7 @@ import { loginUser } from "../store/actions/loginLogoutActions";
 import { returnErrors } from "../store/actions/errorActions";
 import { Redirect } from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import darkBeach from "../assets/DarkBeach.jpg"
 
 class LogInPage extends Component {
   constructor(props) {
@@ -40,37 +41,50 @@ class LogInPage extends Component {
     }
   };
 
+
+
   render() {
+    let backDrop = {
+      backgroundImage: `url(${darkBeach})`, backgroundPosition: "center", backgroundRepeat: "no-repeat",
+      backgroundSize: "cover", height: "100vh", opacity: "0.7"
+    }
     return (
       <div>
-        {this.redirect()}
-        <div className="formstyle">
-          <h3>Login</h3>
-          <AccountCircleIcon />
-          <form onSubmit={this.handleSubmit}>
-            <TextField
-              name="email"
-              type="text"
-              value={this.state.email}
-              onChange={this.handleInputChange}
-              label="Email"
-              margin="normal"
-              variant="outlined"
-            />
 
-            <br />
-            <TextField
-              name="password"
-              type="text"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-              label="Password"
-              margin="normal"
-              variant="outlined"
-            />
-            <br />
-            <input type="submit" value="Submit" className="submit" />
-          </form>
+        <div style={backDrop}></div>
+
+        <div>
+          {this.redirect()}
+          <div className="formstyle">
+            <h3>Login</h3>
+            <AccountCircleIcon />
+            <form onSubmit={this.handleSubmit}>
+              <TextField
+                name="email"
+                type="text"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+                label="Email"
+                margin="normal"
+                variant="outlined"
+                fullWidth
+              />
+
+              <br />
+              <TextField
+                name="password"
+                type="text"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+                label="Password"
+                margin="normal"
+                variant="outlined"
+                fullWidth
+              />
+              <br />
+              <input type="submit" value="Submit" className="submit" />
+            </form>
+          </div>
         </div>
       </div>
     );
