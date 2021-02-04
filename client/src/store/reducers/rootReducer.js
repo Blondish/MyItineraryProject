@@ -7,6 +7,8 @@ import loginLogoutReducer from "./loginLogoutReducer";
 import errorReducer from "./errorReducer";
 import authReducer from "./authReducer";
 import favouritesReducer from "./favouritesReducer";
+import loadingReducer from './loadingReducer';
+
 const rootReducer = combineReducers({
   cities: citiesReducer,
   itineraries: itineraryReducer,
@@ -15,7 +17,8 @@ const rootReducer = combineReducers({
   users: loginLogoutReducer,
   favourites: favouritesReducer,
   error: errorReducer,
-  auth: authReducer
+  auth: authReducer,
+  isLoaded: loadingReducer
 });
 
 export default rootReducer;

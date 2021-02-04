@@ -43,7 +43,7 @@ h1 {
   font-family: 'Fjalla One', sans-serif;
   font-size: 3em
 }
-h2 {
+.flexdiv h2 {
   width: 60%;
   margin: 10px auto;
   padding: 20px 0;
@@ -51,7 +51,7 @@ h2 {
   font-family: 'Fjalla One', sans-serif;
 }
 
-h3 {
+.flexdiv h3 {
   font-family: 'Fjalla One', sans-serif;
   color: #020000;
   margin-bottom: 0;
@@ -81,8 +81,8 @@ h3 {
 
 .login {
   padding: 13% 0;
-    position: relative;
-    margin: auto
+  position: relative;
+  margin: auto
 }
 
 .login h3 {
@@ -127,11 +127,6 @@ footer img {
   margin: 3% auto
 }
 
-.cityname {
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .city {
   width: 300px;
   height: 200px;
@@ -139,19 +134,12 @@ footer img {
   margin: 15px;
   text-align: center;
   border-radius: 20px;
-  box-shadow: 5px 5px 10px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
   cursor: pointer;
   font-weight: 1000
 }
 
 .city :hover {
   opacity: 0.9;
-}
-
-.city img {
-  width: 300px;
-  height: 200px;
-  border-radius: 20px;;
 }
 
 
@@ -168,11 +156,10 @@ input {
   color: black;
 }
 .cityname {
-  position: relative;
-  bottom: 50%;
-  z-index: 1;
-  color: white;
-  font-size: 2em
+  
+  font-size: 2em;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 /* Itineries Display styling */
@@ -194,6 +181,8 @@ input {
 
 .profileinfo img {
   border-radius: 50%;
+  width: 100px;
+  height: 100px
 }
 .otherinfo {
   align-self: center;
@@ -258,4 +247,17 @@ input {
   background-color: #190605;
   color: white;
   font-size: 1em
+}
+
+.formstyle .submit:hover {
+  opacity: 0.8;
+}
+.formstyle a {
+  text-decoration: none;
+  font-size: 1.1em;
+  color:#190605;
+}
+
+.formstyle a:hover {
+  text-decoration: underline
 }

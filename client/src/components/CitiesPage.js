@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchCities } from "../store/actions/cityActions";
+import { setLoading, stopLoading } from "../store/actions/loadingActions"
 import { Link } from "react-router-dom";
+import CityCard from "../components/CityCard"
 
 class CitiesPage extends Component {
   constructor(props) {
@@ -9,19 +11,18 @@ class CitiesPage extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      cities: [],
       filter: ""
     };
   }
 
   handleChange = e => {
     this.setState({
-      filter: e.target.value
+      filter: e.target.value,
     });
   };
 
   componentDidMount() {
-    this.props.fetchCities();
+    this.props.fetchCities()
   }
 
 
@@ -37,9 +38,14 @@ class CitiesPage extends Component {
 
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (filteredArray.length === 0) {
+    }
+    else if (isLoaded) {
       return <div>Loading...</div>;
-    } else {
+    }
+    else if (filteredArray.length === 0 && isLoaded === false) {
+      return <div>No results for your search</div>;
+    }
+    else {
       return (
         <div className="container">
           <h2 className="search">Search for City</h2>
@@ -53,14 +59,10 @@ class CitiesPage extends Component {
           <div className="citiesholder">
 
             {filteredArray.map(city => (
-              <div key={city._id} className="city">
-                <Link to={"/Itineraries/" + city._id + "/" + city.name}>
-                  <img style={{
-                    backgroundImage: `url(${city.cityImage})`, backgroundPosition: "center", backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover"
-                  }} />
+              <div key={city._id}>
+                <Link to={"/Itineraries/" + city._id + "/" + city.name} style={{ textDecoration: "none", paddingBottom: "20px" }} cityImage={city.cityImage}>
+                  <CityCard city={city}></CityCard>
                 </Link>
-                <div className="cityname" >{city.name}</div>
               </div>
             ))}
           </div>
@@ -71,10 +73,10 @@ class CitiesPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  cities: state.cities
+  cities: state.cities,
 });
 
 export default connect(
   mapStateToProps,
-  { fetchCities }
+  { fetchCities, setLoading, stopLoading }
 )(CitiesPage);

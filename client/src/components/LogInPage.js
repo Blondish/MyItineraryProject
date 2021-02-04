@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { loginUser } from "../store/actions/loginLogoutActions";
 import { returnErrors } from "../store/actions/errorActions";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import darkBeach from "../assets/DarkBeach.jpg"
 
@@ -68,6 +68,7 @@ class LogInPage extends Component {
                 margin="normal"
                 variant="outlined"
                 fullWidth
+                helperText="Please enter an email address"
               />
 
               <br />
@@ -83,6 +84,9 @@ class LogInPage extends Component {
               />
               <br />
               <input type="submit" value="Submit" className="submit" />
+              <div>
+                <Link to="/CreateAccountPage"><h5>New to MyTinerary?</h5></Link>
+              </div>
             </form>
           </div>
         </div>

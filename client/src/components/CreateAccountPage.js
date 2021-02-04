@@ -25,7 +25,7 @@ class CreateAccountPage extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state);
+
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -39,23 +39,24 @@ class CreateAccountPage extends Component {
       backgroundSize: "cover", height: "100vh", opacity: "0.7"
     }
     return (
-      <>
+      <div>
         <div style={backDrop}></div>
         <div className="formstyle">
-          <h3>Please Fill Out the form</h3>
+          <h3>Create MyTinerary Account</h3>
           <form onSubmit={this.handleSubmit}>
             <TextField
               name="username"
               type="text"
               value={this.state.username}
               onChange={this.handleInputChange}
-              label="username"
+              label="Username"
               margin="normal"
               variant="outlined"
               fullWidth
             />
             <br />
             <TextField
+              required
               name="email"
               type="text"
               value={this.state.email}
@@ -68,6 +69,7 @@ class CreateAccountPage extends Component {
 
             <br />
             <TextField
+              required
               name="password"
               type="text"
               value={this.state.password}
@@ -81,7 +83,7 @@ class CreateAccountPage extends Component {
             <input type="submit" value="Submit" className="submit" />
           </form>
         </div>
-      </>
+      </div>
     );
   }
 }
