@@ -4,6 +4,7 @@ const initState = {
 };
 
 const citiesReducer = (state = initState, action) => {
+  console.log("Red", state.isLoaded)
   switch (action.type) {
     case "LOADING_CITIES":
       return {

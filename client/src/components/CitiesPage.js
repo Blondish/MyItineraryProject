@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchCities } from "../store/actions/cityActions";
-import { setLoading, stopLoading } from "../store/actions/loadingActions"
 import { Link } from "react-router-dom";
 import CityCard from "../components/CityCard"
 
@@ -10,7 +9,6 @@ class CitiesPage extends Component {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
       filter: ""
     };
   }
@@ -29,8 +27,9 @@ class CitiesPage extends Component {
 
   render() {
 
-    const { cities } = this.props.cities;
-    const { error, isLoaded } = this.state;
+    const { cities, isLoaded } = this.props.cities;
+    const { error } = this.state;
+    console.log(this.props)
     let filteredArray = cities.filter(city => {
       let cityName = city.name.toLowerCase();
       return cityName.startsWith(this.state.filter) !== false;
@@ -42,7 +41,7 @@ class CitiesPage extends Component {
     else if (isLoaded) {
       return <div>Loading...</div>;
     }
-    else if (filteredArray.length === 0 && isLoaded === false) {
+    else if (filteredArray.length === 0) {
       return <div>No results for your search</div>;
     }
     else {
@@ -60,7 +59,11 @@ class CitiesPage extends Component {
 
             {filteredArray.map(city => (
               <div key={city._id}>
-                <Link to={"/Itineraries/" + city._id + "/" + city.name} style={{ textDecoration: "none", paddingBottom: "20px" }} cityImage={city.cityImage}>
+                <Link to={{
+                  pathname: "/Itineraries/" + city._id + "/" + city.name,
+                  state: city.cityImage
+                }}
+                  style={{ textDecoration: "none", paddingBottom: "20px" }}>
                   <CityCard city={city}></CityCard>
                 </Link>
               </div>
@@ -74,9 +77,10 @@ class CitiesPage extends Component {
 
 const mapStateToProps = state => ({
   cities: state.cities,
+
 });
 
 export default connect(
   mapStateToProps,
-  { fetchCities, setLoading, stopLoading }
+  { fetchCities }
 )(CitiesPage);

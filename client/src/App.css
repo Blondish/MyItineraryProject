@@ -170,6 +170,18 @@ input {
   color: black;
   font-size: 0.9em;
 }
+
+.itinerariesCityImg {
+  background-position-x: center;
+    background-position-y: 80%;
+    background-size: cover;
+    height: 300px;
+    width: 95%;
+    margin: auto;
+    max-width: 1000px;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 #1a1a1a;
+}
 .itinerariesfetch {
   margin: 10px;
 }

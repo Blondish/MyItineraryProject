@@ -1,13 +1,20 @@
 const initState = {
-  itineraries: []
+  itineraries: [],
+  isLoaded: false
 };
 
 const itineraryReducer = (state = initState, action) => {
   switch (action.type) {
+    case "LOADING_ITINERARIES":
+      return {
+        ...state,
+        isLoaded: true
+      };
     case "FETCH_ITINERARIES":
       return {
         ...state,
-        itineraries: action.payload
+        itineraries: action.payload,
+        isLoaded: false
       };
 
     default:

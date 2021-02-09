@@ -22,19 +22,23 @@ class itineraries extends Component {
   };
 
   render() {
-    const { itineraries } = this.props.itineraries;
+    const { itineraries, isLoaded } = this.props.itineraries;
     const cityname = this.props.match.params.cityname;
-    console.log(this.props);
     const { error } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
+    } else if (isLoaded) {
+      return <div>Loading...</div>;
     } else if (itineraries.length === 0) {
-      return <div>No Itineraries available for this City</div>;
-    } else {
+      return <div>There are no itineraries for this city</div>;
+    }
+    else {
       return (
         <div>
-          <h1 className="cityname"> {cityname}</h1>
-          <img src={this.props.cityImage}></img>
+          <div className="container">
+            <h1 className="cityname"> {cityname}</h1>
+            <div className="itinerariesCityImg" style={{ backgroundImage: `url(${this.props.location.state})` }}></div>
+          </div>
           {itineraries.map(itinerary => (
             <div key={itinerary._id}>
               <ItineraryItem
