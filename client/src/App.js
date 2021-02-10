@@ -26,7 +26,6 @@ class App extends Component {
       this.props.loadUser();
     }
     if (this.props) {
-      console.log(this.props)
     }
   }
 

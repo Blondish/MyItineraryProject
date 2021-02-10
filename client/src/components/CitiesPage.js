@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchCities } from "../store/actions/cityActions";
 import { Link } from "react-router-dom";
 import CityCard from "../components/CityCard"
+import Spinner from "../components/Spinner"
 
 class CitiesPage extends Component {
   constructor(props) {
@@ -39,10 +40,22 @@ class CitiesPage extends Component {
       return <div>Error: {error.message}</div>;
     }
     else if (isLoaded) {
-      return <div>Loading...</div>;
+      return <div><Spinner /></div>;
     }
     else if (filteredArray.length === 0) {
-      return <div>No results for your search</div>;
+      return (
+        <div className="container">
+          <h2 className="search">Search for City</h2>
+          <form>
+            <input
+              type="text"
+              value={this.state.filter}
+              onChange={this.handleChange}
+            ></input>
+          </form>
+          <h3>No Matches to your Search...</h3>
+        </div>
+      )
     }
     else {
       return (
